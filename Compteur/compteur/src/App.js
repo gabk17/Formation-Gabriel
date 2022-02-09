@@ -1,34 +1,26 @@
 import React, { useState } from "react";
+import Counters from './Counters';
 
 const App = () => {
 
-const [counter, setCounter] = useState(0)
+	const [counterList, setCounterList] = useState([]);
 
-const increment = () => {
-	setCounter(counter + 1)
+	const addCounter = (counter) => {
+  	const id = Math.floor(Math.random() * 10000) + 1;
+  	const newCounter = { id, ...counter };
+  	setCounterList([...counterList, newCounter]);
+	}
+
+	const deleteCounter = (id) => {
+  	setCounterList(counterList.filter((counter) => counter.id !== id));
+	}
+
+	return (
+		<div>
+   	 <button onClick={addCounter}>Add Counter</button>
+			<Counters counters = {counterList} onDelete = {deleteCounter}/>
+		</div>
+	)
 }
 
-const decrement = () => {
-	setCounter(counter - 1)
-}
-
-const reset = () => {
-  setCounter(0)
-}
-
-return (
-	<div>
-	Here's A Counter: {counter}
-	<div>
-		<button 
-		onClick={increment}>Increment</button>
-		<button
-		onClick={decrement}>Decrement</button>
-    <button
-		onClick={reset}>Reset</button>
-	</div>
-	</div>
-)
-}
-
-export default App
+export default App;
