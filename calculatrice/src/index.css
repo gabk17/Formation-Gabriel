@@ -23,7 +23,7 @@
 .display {
   padding: 18px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #fff;
   color: #fff;
   font-size: 30px;
   font-weight: 300;
@@ -31,7 +31,7 @@
 
 .display .screen {
   font-size: 25px;
-  color: #fff;
+  color: #000;
 }
 
 .btn {

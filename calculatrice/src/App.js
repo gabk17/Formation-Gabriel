@@ -1,16 +1,48 @@
-import { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './index.css';
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-	const[calculation, setCalculation] = useState(0);
+	const [calculation, setCalculation] = useState("");
+	const operatorSign = ['/', '*', '+', '-', '.'];
+
+	const doCalculation = (e) => {
+		if((operatorSign.includes(e) && calculation === "") || 
+		//checks if an operator was clicked with no numbers initially
+			 (operatorSign.includes(e) && operatorSign.includes(calculation.slice(-1))))
+		//checks whether two operators are consecutive to each other or not	 
+			 {
+				 return;
+			 }
+
+		setCalculation(calculation + e);
+		
+	}
+
+	const finalResult = () => {
+		setCalculation(eval(calculation).toString());
+	}
+
+	const deleteDigit = () => {
+		if(calculation === ""){
+			return;
+		}
+
+		const value = calculation.slice(0, -1); //index of -1 indicates the index before 0, meaning last input
+		setCalculation(value);
+	}
 
 	const numberButtons = () => {
 		const numbers = [];
 
 		for(let i = 1; i <= 9; i++){
-			numbers.push(<button class="btn btn-primary"  key={i}>{i}</button>);		
+			numbers.push(
+			<button 
+				class="btn btn-primary" 
+				onClick={() => doCalculation(i.toString())} //turns the numbers into string to display
+				key={i}>
+				{i}
+			</button>);		
 		}
 
 		return numbers;
@@ -21,14 +53,14 @@ function App() {
       <div className="calculator">
   		
       	<div className="display">
-  	  		<input className="screen" type='text' readonly value={calculation} disabled/>	
+  	  		<input className="screen" type='text' readonly value={calculation || "0"} disabled/>	
         </div>
   
         <div className="operators">
-  				<button class="btn btn-info" value="/">/</button>
-  				<button class="btn btn-info" value="*">x</button>
-  				<button class="btn btn-info" value="+">+</button>        
-  				<button class="btn btn-info" value="-">-</button>        
+  				<button class="btn btn-info" onClick={() => doCalculation('/')}>/</button>
+  				<button class="btn btn-info" onClick={() => doCalculation('*')}>x</button>
+  				<button class="btn btn-info" onClick={() => doCalculation('+')}>+</button>        
+  				<button class="btn btn-info" onClick={() => doCalculation('-')}>-</button>        
        	 </div>
   		
         <div className="numbers">
@@ -36,10 +68,11 @@ function App() {
         </div>
   
   	  	<div className="numbers">
-  				<button class="btn btn-primary" value=".">.</button>
-  				<button class="btn btn-primary" value="0">0</button>
-  				<button class="btn btn-danger">C</button>
-        	<button class="btn btn-info">=</button>        
+  				<button class="btn btn-primary" onClick={() => doCalculation('.')}>.</button>
+  				<button class="btn btn-primary" onClick={() => doCalculation('0')}>0</button>
+  				<button class="btn btn-danger" onClick={deleteDigit}>C</button>
+
+        	<button class="btn btn-info" onClick={finalResult}>=</button>        
         </div>
   
       </div>
