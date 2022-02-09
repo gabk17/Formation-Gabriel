@@ -26,7 +26,7 @@ const Counter = ({a_counter, onDelete}) => {
         <button onClick={() => onDelete(a_counter.id)}>Delete Counter</button>
 	   </div>
   	</div>
-  )
+  );
 }
 
 export default Counter;

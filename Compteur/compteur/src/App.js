@@ -18,9 +18,9 @@ const App = () => {
 	return (
 		<div>
    	 <button onClick={addCounter}>Add Counter</button>
-			<Counters counters = {counterList} onDelete = {deleteCounter}/>
+			<Counters counters={counterList} onDelete={deleteCounter}/>
 		</div>
-	)
+	);
 }
 
 export default App;
