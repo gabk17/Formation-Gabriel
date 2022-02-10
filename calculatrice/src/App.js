@@ -13,6 +13,13 @@ function App() {
 	const [calculation, setCalculation] = useState("");
 	const operatorSign = ['/', '*', '+', '-', '.'];
 
+	const checkDot = (i) => {
+		if(calculation.match(/\./)){
+			return;
+		}
+		doCalculation(i)
+	}
+
 	const doCalculation = (e) => {
 		if((operatorSign.includes(e) && calculation === "") || 
 		//checks if an operator was clicked with no numbers initially
@@ -101,7 +108,7 @@ function App() {
         </div>
   
   	  	<div className="operators">
-  				<button className="btn btn-primary" onClick={() => doCalculation('.')}>.</button>
+  				<button className="btn btn-primary" onClick={() => checkDot('.')}>.</button>
   				<button className="btn btn-primary" onClick={() => doCalculation('0')}>0</button>
   				<button className="btn btn-danger" onClick={deleteDigit}>DEL</button>
 					<button className="btn btn-danger" onClick={reset}>AC</button>       
