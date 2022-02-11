@@ -1,121 +1,140 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from "./utils/Button"
+import * as Operator from './constants/operators';
 
 function App() {
+	const [total, setTotal] = useState("0");
+	const [operator, setOperator] = useState(null);
+  const [number, setNumber] = useState("0");
+	const [result, setResult] = useState("0")
 
-	useEffect(() => {
-		let error = calculation;
-		if(error === "Infinity" || error === "-Infinity") {
-			setCalculation("Error");
-		}
-	})
+	const addOperator = (operatorSign) => {
+			switch (operator) {		
+				case Operator.PLUS:
+					setTotal(total + parseFloat(number));
+					break;
 
-	const [calculation, setCalculation] = useState("");
-	const operatorSign = ['/', '*', '+', '-', '.'];
+				case Operator.MINUS:
+					setTotal(total - parseFloat(number));
+					break;
 
-	const checkDot = (i) => {
-		if(calculation.match(/\./)){
-			return;
-		}
-		doCalculation(i)
-	}
+				case Operator.MULTIPLY:
+					setTotal(total * parseFloat(number));
+					break;
 
-	const doCalculation = (e) => {
-		if((operatorSign.includes(e) && calculation === "") || 
-		//checks if an operator was clicked with no numbers initially
-			 (operatorSign.includes(e) && operatorSign.includes(calculation.slice(-1))) ||
-		//checks whether two operators are consecutive to each other or not		 
-			 (calculation === "0" && e === "0") ||
-		//checks if first number is 0 and prevents new 0 to be added
-			 (calculation === "Error" || calculation === "Can't Compute")
-		//prevents adding numbers after word Error
-			 )
- 
-			 {
-				 return;
-			 }
+				case Operator.DIVIDE:
+					setTotal(total / parseFloat(number));
+					break;
 
-
-		setCalculation(calculation + e);
-		
-		if(calculation === "0" && !operatorSign.includes(e)){
-			setCalculation(e);
-		//Does not allow replacing the starting 0 by an operator, but allows replacing it by numbers
-		}
-	}
-
-	const finalResult = (e) => {
-		if(calculation === "" && e === "="){
-			setCalculation("0");
-		}
-
-		let splitting = calculation.split('+')
-		
-			for(let i = splitting.length - 1; i >= 0; i--){
-				if(splitting[i].split(".").length > 2){
-					setCalculation("Can't Compute");
-			//Does not allow 2 decimal points in  a number
-				}					
+				default:
+					setTotal(parseFloat(number));
 			}
 
-
-		setCalculation(eval(calculation).toString());
-
-		}
-
-	const deleteDigit = () => {
-		const value = calculation.slice(0, -1); //index of -1 indicates the index before 0, meaning last input
-		setCalculation(value);
+      setNumber("0");
+			setOperator(operatorSign);
 	}
 
-	const reset = () => {
-		setCalculation("");
-	}
+  const doCalculation = (input) => () => {
+    const num = parseFloat(number);
 
-	const numberButtons = () => {
-		const numbers = [];
+		
+    if (input === "AC") {
+      setNumber("0");
+      setResult("0");
+      setTotal("0");
+      setOperator(null);
+      return;
+    }
 
-		for(let i = 1; i <= 9; i++){
-			numbers.push(
-			<button 
-				className="btn btn-primary" 
-				onClick={() => doCalculation(i.toString())} //turns the numbers into string to display
-				key={i}>
-				{i}
-			</button>);		
-		}
+    if (input === ".") { 
+      if (number.includes(".")) return; //Checks for multiple inputs of commas
 
-		return numbers;
-	}
+      setNumber(number + ".");
+      return;
+    }
+
+    if (input === Operator.PLUS) {
+      addOperator(Operator.PLUS) //Makes sure we have a previous operation
+      return;
+    }
+    if (input === Operator.MINUS) {
+      addOperator(Operator.MINUS)
+      return;
+    }
+    if (input === Operator.MULTIPLY) {
+      addOperator(Operator.MULTIPLY)
+      return;
+    }
+    if (input === Operator.DIVIDE) {
+      addOperator(Operator.DIVIDE)
+      return;
+    }
+
+    if (input === "=") {
+      if (!operator) return;
+
+      if (operator === Operator.PLUS) {
+        setNumber((total + parseFloat(number)).toString());
+      } else if (operator === Operator.MINUS) {
+        setNumber((total - parseFloat(number)).toString());
+      } else if (operator === Operator.MULTIPLY) {
+        setNumber((total * parseFloat(number)).toString());
+      } else if (operator === Operator.DIVIDE) {
+        setNumber((total / parseFloat(number)).toString());
+      }
+      setTotal("0");
+      setOperator(null);
+      return;
+    }
+
+    if (number[number.length - 1] === ".") {
+      setNumber(number + input);
+    } else {
+      setNumber(parseFloat(num + input).toString());
+    }
+
+  };
+
+
  
   return (
 		<div className="App">
       <div className="calculator">
   		
       	<div className="display">
-  	  		<input className="screen" type='text' value={calculation} disabled/>	
+  	  		<span className="display-screen-result">{result}</span>
+					<div className="display-screen">{number}</div>	
         </div>
   
         <div className="operators">
-  				<button className="btn btn-info" onClick={() => doCalculation('/')}>/</button>
-  				<button className="btn btn-info" onClick={() => doCalculation('*')}>x</button>
-  				<button className="btn btn-info" onClick={() => doCalculation('+')}>+</button>        
-  				<button className="btn btn-info" onClick={() => doCalculation('-')}>-</button>        
+  				<Button onClick={doCalculation} input={Operator.DIVIDE }bootstrapOption="info"/>
+  				<Button onClick={doCalculation} input={Operator.MULTIPLY }bootstrapOption="info"/>
+  				<Button onClick={doCalculation} input={Operator.PLUS} bootstrapOption="info"/>        
+  				<Button onClick={doCalculation} input={Operator.MINUS} bootstrapOption="info"/>      
        	 </div>
   		
         <div className="numbers">
-  				{numberButtons()}
+  				<Button onClick={doCalculation} input="1" bootstrapOption="primary"/>
+          <Button onClick={doCalculation} input="2" bootstrapOption="primary"/>
+          <Button onClick={doCalculation} input="3" bootstrapOption="primary"/>
+  				<Button onClick={doCalculation} input="4" bootstrapOption="primary"/>
+       	  <Button onClick={doCalculation} input="5" bootstrapOption="primary"/>
+       	  <Button onClick={doCalculation} input="6" bootstrapOption="primary"/>
+  				<Button onClick={doCalculation} input="7" bootstrapOption="primary"/>
+       	  <Button onClick={doCalculation} input="8" bootstrapOption="primary"/>
+       	  <Button onClick={doCalculation} input="9" bootstrapOption="primary"/>
+
         </div>
   
   	  	<div className="operators">
-  				<button className="btn btn-primary" onClick={() => checkDot('.')}>.</button>
-  				<button className="btn btn-primary" onClick={() => doCalculation('0')}>0</button>
-  				<button className="btn btn-danger" onClick={deleteDigit}>DEL</button>
-					<button className="btn btn-danger" onClick={reset}>AC</button>       
+  				<Button onClick={doCalculation} input="." bootstrapOption="primary"/>
+  				<Button onClick={doCalculation} input="0" bootstrapOption="primary"/> 
+					<Button onClick={doCalculation} input="AC" bootstrapOption="danger"/>     
         </div>
   
 				<div className="operators">
-					<button className="btn btn-info" onClick={() => finalResult('=')}>=</button> 
+					<Button onClick={doCalculation} input="=" bootstrapOption="info"/>
 				</div>
       </div>
 		</div>

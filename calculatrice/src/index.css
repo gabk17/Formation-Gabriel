@@ -29,11 +29,16 @@
   font-weight: 300;
 }
 
-.display .screen {
+.display .display-screen {
   font-size: 25px;
   color: #000;
 }
 
+.display .display-screen-result {
+  font-size: 20px;
+  color: #000;
+  opacity: 0.8;
+}
 .btn {
   cursor: pointer
 }
@@ -46,7 +51,19 @@
   display: flex;
 }
 
-.operators button {
+.operators .btn-info {
+  flex: 1;
+  border-radius: 0px;
+  font-weight: 700
+}
+
+.operators .btn-primary {
+  flex: 1;
+  border-radius: 0px;
+  font-weight: 700
+}
+
+.operators .btn-danger {
   flex: 1;
   border-radius: 0px;
   font-weight: 700
@@ -57,7 +74,7 @@
   flex-wrap: wrap;
 }
 
-.numbers button {
+.numbers .btn-primary {
   flex: 33.333%;
   border-radius: 0px;
 }
