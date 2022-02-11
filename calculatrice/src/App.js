@@ -37,7 +37,6 @@ function App() {
 
   const doCalculation = (input) => () => {
     const num = parseFloat(number);
-
 		
     if (input === "AC") {
       setNumber("0");
@@ -96,8 +95,6 @@ function App() {
 
   };
 
-
- 
   return (
 		<div className="App">
       <div className="calculator">
