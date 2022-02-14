@@ -22,28 +22,29 @@ function App() {
     if (number.includes(".")) return;
 
       setNumber(number + ".");
-      return;
   }
 
   const addInput = (input) => () => {
 
     const num = parseFloat(number);
 
-    if (input === Operator.PLUS) {
-      addOperator(Operator.PLUS) 
-      return;
-    }
-    if (input === Operator.MINUS) {
-      addOperator(Operator.MINUS)
-      return;
-    }
-    if (input === Operator.MULTIPLY) {
-      addOperator(Operator.MULTIPLY)
-      return;
-    }
-    if (input === Operator.DIVIDE) {
-      addOperator(Operator.DIVIDE)
-      return;
+    // eslint-disable-next-line default-case
+    switch (input) {		
+      case Operator.PLUS:
+        addOperator(Operator.PLUS) 
+        return;
+
+      case Operator.MINUS:
+        addOperator(Operator.MINUS)
+        return;
+
+      case Operator.MULTIPLY:
+        addOperator(Operator.MULTIPLY)
+        return;
+
+      case Operator.DIVIDE:
+        addOperator(Operator.DIVIDE)
+        return;
     }
 
     if (number[number.length - 1] === ".") {
@@ -55,26 +56,26 @@ function App() {
   };
 
 	const addOperator = (input) => {
-			switch (operator) {		
-				case Operator.PLUS:
-					setTotal(total + parseFloat(number));
-					break;
+    switch (operator) {		
+      case Operator.PLUS:
+        setTotal(total + parseFloat(number));
+        break;
 
-				case Operator.MINUS:
-					setTotal(total - parseFloat(number));
-					break;
+      case Operator.MINUS:
+        setTotal(total - parseFloat(number));
+        break;
 
-				case Operator.MULTIPLY:
-					setTotal(total * parseFloat(number));
-					break;
+      case Operator.MULTIPLY:
+        setTotal(total * parseFloat(number));
+        break;
 
-				case Operator.DIVIDE:
-					setTotal(total / parseFloat(number));
-					break;
+      case Operator.DIVIDE:
+        setTotal(total / parseFloat(number));
+        break;
 
-				default:
-					setTotal(parseFloat(number));
-			}
+      default:
+        setTotal(parseFloat(number));
+    }
 
       setNumber("0");
 			setOperator(input);
@@ -84,29 +85,29 @@ function App() {
     if (!operator) return;
 
     switch (operator) {		
-				case Operator.PLUS:
-					setNumber((total + parseFloat(number)).toString());
-					break;
+      case Operator.PLUS:
+        setNumber((total + parseFloat(number)).toString());
+        break;
 
-				case Operator.MINUS:
-					setNumber((total - parseFloat(number)).toString());
-					break;
+      case Operator.MINUS:
+        setNumber((total - parseFloat(number)).toString());
+        break;
 
-				case Operator.MULTIPLY:
-					setNumber((total * parseFloat(number)).toString());
-					break;
+      case Operator.MULTIPLY:
+        setNumber((total * parseFloat(number)).toString());
+        break;
 
-				case Operator.DIVIDE:
-					setNumber((total / parseFloat(number)).toString());
-					break;
+      case Operator.DIVIDE:
+        setNumber((total / parseFloat(number)).toString());
+        break;
 
-				default:
-					break
-			}
+      default:
+        break
+    }
 
-      setTotal("0");
-      setOperator(null);
-      return;
+    setTotal("0");
+    setOperator(null);
+    return;
   }
 
   return (
@@ -145,7 +146,7 @@ function App() {
         </div>
   
 				<div className="operators">
-					<button onClick={doCalculation} className="btn btn-info">=</button> 
+					<button onClick={doCalculation} className="btn btn-info">{Operator.EQUAL}</button> 
 				</div>
       </div>
 		</div>
