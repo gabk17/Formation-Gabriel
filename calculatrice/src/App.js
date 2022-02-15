@@ -24,27 +24,31 @@ function App() {
       setNumber(number + ".");
   }
 
-  const addInput = (input, type) => {
+	const addOperator = (input, type) => {
+    console.log(input, type);
 
     const num = parseFloat(number);
-    console.log(input,  type)
-    // eslint-disable-next-line default-case
-    switch (input) {		
+    const hookType = (type === "Equal") ? setNumber : setTotal
+
+    switch (operator) {		
       case Operator.PLUS:
-        addOperator(Operator.PLUS) 
-        return;
+        hookType(total + parseFloat(number));
+        break;
 
       case Operator.MINUS:
-        addOperator(Operator.MINUS)
-        return;
+        hookType(total - parseFloat(number));
+        break;
 
       case Operator.MULTIPLY:
-        addOperator(Operator.MULTIPLY)
-        return;
+        hookType(total * parseFloat(number));
+        break;
 
       case Operator.DIVIDE:
-        addOperator(Operator.DIVIDE)
-        return;
+        hookType(total / parseFloat(number));
+        break;
+
+      default:
+        hookType(parseFloat(number));
     }
 
     if (number[number.length - 1] === ".") {
@@ -53,31 +57,7 @@ function App() {
       setNumber(parseFloat(num + input).toString());
     }
 
-  };
-
-	const addOperator = (input) => {
-    switch (operator) {		
-      case Operator.PLUS:
-        setTotal(total + parseFloat(number));
-        break;
-
-      case Operator.MINUS:
-        setTotal(total - parseFloat(number));
-        break;
-
-      case Operator.MULTIPLY:
-        setTotal(total * parseFloat(number));
-        break;
-
-      case Operator.DIVIDE:
-        setTotal(total / parseFloat(number));
-        break;
-
-      default:
-        setTotal(parseFloat(number));
-    }
-
-      setNumber("0");
+    
 			setOperator(input);
 	}
 
@@ -86,26 +66,25 @@ function App() {
 
     switch (operator) {		
       case Operator.PLUS:
-        setNumber((total + parseFloat(number)).toString());
+        setNumber((total + parseFloat(number)));
         break;
 
       case Operator.MINUS:
-        setNumber((total - parseFloat(number)).toString());
+        setNumber((total - parseFloat(number)));
         break;
 
       case Operator.MULTIPLY:
-        setNumber((total * parseFloat(number)).toString());
+        setNumber((total * parseFloat(number)));
         break;
 
       case Operator.DIVIDE:
-        setNumber((total / parseFloat(number)).toString());
+        setNumber((total / parseFloat(number)));
         break;
 
       default:
         break
     }
 
-    setTotal("0");
     setOperator(null);
     return;
   }
@@ -120,37 +99,38 @@ function App() {
         </div>
   
         <div className="operators">
-  				<Button onClick={addInput} input={Operator.DIVIDE} type="anOperator" bootstrapOption="info"/>
-  				<Button onClick={addInput} input={Operator.MULTIPLY} type="anOperator" bootstrapOption="info"/>
-  				<Button onClick={addInput} input={Operator.PLUS} type="anOperator" bootstrapOption="info"/>        
-  				<Button onClick={addInput} input={Operator.MINUS} type="anOperator" bootstrapOption="info"/>      
+  				<Button onClick={addOperator} input={Operator.DIVIDE} type="anOperator" bootstrapOption="info"/>
+  				<Button onClick={addOperator} input={Operator.MULTIPLY} type="anOperator" bootstrapOption="info"/>
+  				<Button onClick={addOperator} input={Operator.PLUS} type="anOperator" bootstrapOption="info"/>        
+  				<Button onClick={addOperator} input={Operator.MINUS} type="anOperator" bootstrapOption="info"/>      
        	 </div>
   		
         <div className="numbers">
-  				<Button onClick={addInput} input="1" type="Number" bootstrapOption="primary"/>
-          <Button onClick={addInput} input="2" type="Number" bootstrapOption="primary"/>
-          <Button onClick={addInput} input="3" type="Number"  bootstrapOption="primary"/>
-  				<Button onClick={addInput} input="4" type="Number" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="5" type="Number" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="6" type="Number" bootstrapOption="primary"/>
-  				<Button onClick={addInput} input="7" type="Number" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="8" type="Number" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="9" type="Number" bootstrapOption="primary"/>
+  				<Button onClick={addOperator} input="1" type="Number" bootstrapOption="primary"/>
+          <Button onClick={addOperator} input="2" type="Number" bootstrapOption="primary"/>
+          <Button onClick={addOperator} input="3" type="Number"  bootstrapOption="primary"/>
+  				<Button onClick={addOperator} input="4" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addOperator} input="5" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addOperator} input="6" type="Number" bootstrapOption="primary"/>
+  				<Button onClick={addOperator} input="7" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addOperator} input="8" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addOperator} input="9" type="Number" bootstrapOption="primary"/>
 
         </div>
   
   	  	<div className="operators">
   				<button onClick={checkCommas} className="btn btn-primary">.</button>   
-  				<Button onClick={addInput} input="0" bootstrapOption="primary"/> 
+  				<Button onClick={addOperator} input="0" type="Number" bootstrapOption="primary"/> 
 					<button onClick={doAC} className="btn btn-danger">AC</button>     
         </div>
   
-				<div className="operators">
-					<button onClick={doCalculation} className="btn btn-info">{Operator.EQUAL}</button> 
-				</div>
+        <div className="operators">
+          <Button onClick={addOperator} input={Operator.EQUAL} type="Equal" bootstrapOption="info"/>
+        </div>
       </div>
 		</div>
   );
 }
 
 export default App;
+
