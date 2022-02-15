@@ -24,10 +24,10 @@ function App() {
       setNumber(number + ".");
   }
 
-  const addInput = (input) => () => {
+  const addInput = (input, type) => {
 
     const num = parseFloat(number);
-
+    console.log(input,  type)
     // eslint-disable-next-line default-case
     switch (input) {		
       case Operator.PLUS:
@@ -120,22 +120,22 @@ function App() {
         </div>
   
         <div className="operators">
-  				<Button onClick={addInput} input={Operator.DIVIDE } bootstrapOption="info"/>
-  				<Button onClick={addInput} input={Operator.MULTIPLY } bootstrapOption="info"/>
-  				<Button onClick={addInput} input={Operator.PLUS} bootstrapOption="info"/>        
-  				<Button onClick={addInput} input={Operator.MINUS} bootstrapOption="info"/>      
+  				<Button onClick={addInput} input={Operator.DIVIDE} type="anOperator" bootstrapOption="info"/>
+  				<Button onClick={addInput} input={Operator.MULTIPLY} type="anOperator" bootstrapOption="info"/>
+  				<Button onClick={addInput} input={Operator.PLUS} type="anOperator" bootstrapOption="info"/>        
+  				<Button onClick={addInput} input={Operator.MINUS} type="anOperator" bootstrapOption="info"/>      
        	 </div>
   		
         <div className="numbers">
-  				<Button onClick={addInput} input="1" bootstrapOption="primary"/>
-          <Button onClick={addInput} input="2" bootstrapOption="primary"/>
-          <Button onClick={addInput} input="3" bootstrapOption="primary"/>
-  				<Button onClick={addInput} input="4" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="5" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="6" bootstrapOption="primary"/>
-  				<Button onClick={addInput} input="7" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="8" bootstrapOption="primary"/>
-       	  <Button onClick={addInput} input="9" bootstrapOption="primary"/>
+  				<Button onClick={addInput} input="1" type="Number" bootstrapOption="primary"/>
+          <Button onClick={addInput} input="2" type="Number" bootstrapOption="primary"/>
+          <Button onClick={addInput} input="3" type="Number"  bootstrapOption="primary"/>
+  				<Button onClick={addInput} input="4" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addInput} input="5" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addInput} input="6" type="Number" bootstrapOption="primary"/>
+  				<Button onClick={addInput} input="7" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addInput} input="8" type="Number" bootstrapOption="primary"/>
+       	  <Button onClick={addInput} input="9" type="Number" bootstrapOption="primary"/>
 
         </div>
   

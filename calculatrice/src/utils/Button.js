@@ -1,8 +1,8 @@
-const Button = ({ input, onClick, bootstrapOption }) => {
+const Button = ({ input, onClick, bootstrapOption, type }) => {
   return (
     <div
-      className={`btn btn-${bootstrapOption} ${input}`}
-      onClick={onClick(input)}
+      className={`btn btn-${bootstrapOption} ${input} ${type}`}
+      onClick={() => {onClick(input, type)}}
     >
       {input}
     </div>
