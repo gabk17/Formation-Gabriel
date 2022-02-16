@@ -54,6 +54,14 @@ const showResult = () => {
 
 }
 
+const addComma = () => {
+  const stringifyNumber = number.toString();
+  
+  if (stringifyNumber.includes(".")) return; //Checks if a stringified version of the number already had 1 comma
+
+  setNumber(number + ".");
+  }
+
 const reset = () => {
   setNumber(0)
   setMemory(0)
@@ -77,6 +85,7 @@ const reset = () => {
         <button onClick={() => addNumber("8")}>8</button>
         <button onClick={() => addNumber("9")}>9</button>
         <button onClick={() => addNumber("0")}>0</button>
+        <button onClick={() => addComma(".")}>.</button>
 
         <button onClick={() => addOperator("+")}>+</button>
         <button onClick={() => addOperator("-")}>-</button>
