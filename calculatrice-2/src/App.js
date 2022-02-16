@@ -7,6 +7,10 @@ const [operator, setOperator] = useState(null);
 
 const addNumber = (input) => {
   setNumber(parseFloat(number + input))
+
+  if(operator === null){ //New input after pressing equal sign
+    setMemory(0)
+  }
 }
 
 const addOperator = (input) => {
@@ -16,15 +20,35 @@ const addOperator = (input) => {
     setMemory(number)
   }
   else{
-    setMemory(memory + number)
+    // eslint-disable-next-line default-case
+    switch(operator){
+      case "+":
+        setMemory(memory + number)
+        break
+      case "-":
+        setMemory(memory - number)
+        break
+    }
+    
   }
 
   setNumber(0)
 
 }
 
-const doCalculate = () => {
-  setMemory(memory + number)
+const showResult = () => {
+  if(operator === null){ //Keeps number shown after pressing equal without any operator
+    return
+  }
+  // eslint-disable-next-line default-case
+    switch(operator){
+      case "+":
+        setMemory(memory + number)
+        break
+      case "-":
+        setMemory(memory - number)
+        break
+    }
   setNumber(0)
   setOperator(null)
 
@@ -55,7 +79,9 @@ const reset = () => {
         <button onClick={() => addNumber("0")}>0</button>
 
         <button onClick={() => addOperator("+")}>+</button>
-        <button onClick={doCalculate}>=</button>
+        <button onClick={() => addOperator("-")}>-</button>
+
+        <button onClick={showResult}>=</button>
         <button onClick={reset}>AC</button>
 
 
