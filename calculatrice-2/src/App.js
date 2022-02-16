@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import * as Operator from './operators';
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 useEffect(() => {
 		let error = memory.toString();
 		if(error === "Infinity" || error === "-Infinity") {
-			setMemory("Error")
+			setMemory("Error");
 		}
 	})
 
@@ -18,49 +18,49 @@ const calculate = () =>{
   // eslint-disable-next-line default-case
     switch(operator){
       case Operator.PLUS:
-        setMemory(memory + number)
-        break
+        setMemory(memory + number);
+        break;
       case Operator.MINUS:
-        setMemory(memory - number)
-        break
+        setMemory(memory - number);
+        break;
       case Operator.MULTIPLY:
-        setMemory(memory * number)
-        break
+        setMemory(memory * number);
+        break;
       case Operator.DIVIDE:
-        setMemory(memory / number)
-        break
+        setMemory(memory / number);
+        break;
     }
 }
 
 const addNumber = (input) => {
-  setNumber(parseFloat(number + input))
+  setNumber(parseFloat(number + input));
 
   if(operator === null){ //New input after pressing equal sign
-    setMemory(0)
+    setMemory(0);
   }
 }
 
 const addOperator = (input) => {
-  setOperator(input)
+  setOperator(input);
   
   if(memory === 0){
-    setMemory(number)
+    setMemory(number);
   }
   else{
-    calculate()
+    calculate();
   }
 
-  setNumber(0)
+  setNumber(0);
 }
 
 const showResult = () => {
   if(operator === null){ //Keeps number shown after pressing equal without any operator
-    return
+    return;
   }
 
-  calculate()
-  setNumber(0)
-  setOperator(null)
+  calculate();
+  setNumber(0);
+  setOperator(null);
 }
 
 const addComma = () => {
@@ -72,9 +72,9 @@ const addComma = () => {
   }
 
 const reset = () => {
-  setNumber(0)
-  setMemory(0)
-  setOperator(null)
+  setNumber(0);
+  setMemory(0);
+  setOperator(null);
 }
 
   return (
