@@ -1,5 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import * as Operator from './operators';
+
 function App() {
+
+useEffect(() => {
+		let error = memory.toString();
+		if(error === "Infinity" || error === "-Infinity") {
+			setMemory("Error")
+		}
+	})
 
 const [number, setNumber] = useState(0);
 const [memory, setMemory] = useState(0);
@@ -8,16 +17,16 @@ const [operator, setOperator] = useState(null);
 const calculate = () =>{
   // eslint-disable-next-line default-case
     switch(operator){
-      case "+":
+      case Operator.PLUS:
         setMemory(memory + number)
         break
-      case "-":
+      case Operator.MINUS:
         setMemory(memory - number)
         break
-      case "*":
+      case Operator.MULTIPLY:
         setMemory(memory * number)
         break
-      case "/":
+      case Operator.DIVIDE:
         setMemory(memory / number)
         break
     }
@@ -48,7 +57,7 @@ const showResult = () => {
   if(operator === null){ //Keeps number shown after pressing equal without any operator
     return
   }
-  
+
   calculate()
   setNumber(0)
   setOperator(null)
@@ -87,10 +96,10 @@ const reset = () => {
         <button onClick={() => addNumber("0")}>0</button>
         <button onClick={() => addComma(".")}>.</button>
 
-        <button onClick={() => addOperator("/")}>/</button>
-        <button onClick={() => addOperator("*")}>*</button>
-        <button onClick={() => addOperator("+")}>+</button>
-        <button onClick={() => addOperator("-")}>-</button>
+        <button onClick={() => addOperator(Operator.DIVIDE)}>/</button>
+        <button onClick={() => addOperator(Operator.MULTIPLY)}>*</button>
+        <button onClick={() => addOperator(Operator.PLUS)}>+</button>
+        <button onClick={() => addOperator(Operator.MINUS)}>-</button>
 
         <button onClick={showResult}>=</button>
         <button onClick={reset}>AC</button>
