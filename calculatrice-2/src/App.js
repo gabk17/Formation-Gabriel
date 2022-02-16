@@ -5,6 +5,24 @@ const [number, setNumber] = useState(0);
 const [memory, setMemory] = useState(0);
 const [operator, setOperator] = useState(null);
 
+const calculate = () =>{
+  // eslint-disable-next-line default-case
+    switch(operator){
+      case "+":
+        setMemory(memory + number)
+        break
+      case "-":
+        setMemory(memory - number)
+        break
+      case "*":
+        setMemory(memory * number)
+        break
+      case "/":
+        setMemory(memory / number)
+        break
+    }
+}
+
 const addNumber = (input) => {
   setNumber(parseFloat(number + input))
 
@@ -20,43 +38,25 @@ const addOperator = (input) => {
     setMemory(number)
   }
   else{
-    // eslint-disable-next-line default-case
-    switch(operator){
-      case "+":
-        setMemory(memory + number)
-        break
-      case "-":
-        setMemory(memory - number)
-        break
-    }
-    
+    calculate()
   }
 
   setNumber(0)
-
 }
 
 const showResult = () => {
   if(operator === null){ //Keeps number shown after pressing equal without any operator
     return
   }
-  // eslint-disable-next-line default-case
-    switch(operator){
-      case "+":
-        setMemory(memory + number)
-        break
-      case "-":
-        setMemory(memory - number)
-        break
-    }
+  
+  calculate()
   setNumber(0)
   setOperator(null)
-
 }
 
 const addComma = () => {
   const stringifyNumber = number.toString();
-  
+
   if (stringifyNumber.includes(".")) return; //Checks if a stringified version of the number already had 1 comma
 
   setNumber(number + ".");
@@ -87,6 +87,8 @@ const reset = () => {
         <button onClick={() => addNumber("0")}>0</button>
         <button onClick={() => addComma(".")}>.</button>
 
+        <button onClick={() => addOperator("/")}>/</button>
+        <button onClick={() => addOperator("*")}>*</button>
         <button onClick={() => addOperator("+")}>+</button>
         <button onClick={() => addOperator("-")}>-</button>
 
