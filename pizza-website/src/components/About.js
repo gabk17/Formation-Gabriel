@@ -1,5 +1,5 @@
-import React from 'react'
-import { illustration3 } from '../assets/index'
+import React from 'react';
+import { illustration3 } from '../assets/index';
 
 function About() {
   return (
@@ -27,4 +27,4 @@ function About() {
   )
 }
 
-export default About
+export default About;

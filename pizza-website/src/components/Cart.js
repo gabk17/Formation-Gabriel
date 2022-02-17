@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Cart() {
   return (
@@ -13,4 +13,4 @@ function Cart() {
   )
 }
 
-export default Cart
+export default Cart;
