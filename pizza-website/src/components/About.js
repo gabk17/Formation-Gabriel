@@ -15,11 +15,11 @@ function About() {
 
               Since we opened our first store in 1989, we've been making our thin crust pizza from scratch when you order it. And we still use stone hearth ovens. That's one of the reasons our unique pizzas are worth the wait!
 
-              We pride ourselves in offering you the very best pizza, salads and sandwiches, and we value your patronage. Click the Awards tab to read more about our tasty history, distinguishing awards, and community involvement.
+              We pride ourselves in offering you the very best pizza, salads and sandwiches, and we value your patronage. 
             </p>
           </div>
-          <div class="col-md-3">
-            <img src={illustration3} class=" img-responsive" alt="" width="500" height="500" />
+          <div className="col-md-3">
+            <img src={illustration3} className=" img-responsive" alt="" width="500" height="500" />
           </div>
         </div>
       </div>

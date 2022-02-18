@@ -20,21 +20,21 @@ function Home() {
         <Carousel fade>
           <Carousel.Item>
             <img
-              classNameName="d-block w-100"
+              className="d-block w-100"
               src={image1}
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              classNameName="d-block w-100"
+              className="d-block w-100"
               src={image2}
               alt="Third slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              classNameName="d-block w-100"
+              className="d-block w-100"
               src={image3}
               alt="Fourth slide"
             />

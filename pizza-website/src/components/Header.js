@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Cart from './Cart';
+import CartIcon from './CartIcon';
 
 function Header() {
   return (
@@ -21,7 +21,7 @@ function Header() {
                 <NavLink className="nav-link" to="/menu">Pizzas</NavLink>
               </li>
               <li className="nav-item">
-                <Cart />
+                <CartIcon />
               </li>
             </ul>
           </div>
