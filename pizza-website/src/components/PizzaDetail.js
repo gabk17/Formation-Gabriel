@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { background } from '../assets/index';
-import { DATA } from '../Data'
+import { DATA } from '../Data';
 import ColoredLine from './ColoredLine';
 import MenuTitle from './MenuTitle';
+import { useDispatch } from 'react-redux';
+import { addPizza, delPizza} from './redux/actions/index';
 
 function PizzaDetail() {
 
@@ -13,9 +15,22 @@ function PizzaDetail() {
   // }) 
   // Debugs the Filtering of DATA content, and conditioning of e.id === pizzaID
 
+  const[cartBtn, setCartBtn] = useState("Add to Cart");
+  const dispatch = useDispatch()
   const pizzaID = useParams();
   const pDetail = DATA.filter((e) => e.id === pizzaID.id)
   const pizza = pDetail[0];
+
+  const handleCart = (pizza) =>{
+    if(cartBtn === "Add to Cart"){
+      dispatch(addPizza(pizza))
+      setCartBtn("Remove from Cart")
+    }
+    else{
+      dispatch(delPizza(pizza))
+      setCartBtn("Add to Cart")
+    }
+  }
 
   return (
 
@@ -32,7 +47,7 @@ function PizzaDetail() {
               <hr />
               <h2 className="my-4">${pizza.price}</h2>
               <p className="lead">{pizza.description}</p>
-              <button className="btn btn-outline-danger my-5">Add to Cart</button>
+              <button className="btn btn-outline-danger my-5" onClick={() => handleCart(pizza)}>{cartBtn}</button>
               <hr />
             </div>
           </div>
