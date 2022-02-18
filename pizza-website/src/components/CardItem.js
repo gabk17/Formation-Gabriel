@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 
 const CardItem = (item) => {
+
     return (
       <Card key={item.id} style={{ width: '25rem', marginBottom: '3rem' }}>
         <Card.Img style={{ marginTop: '1rem' }} variant="top" src={item.img} alt={item.title} />
@@ -11,8 +12,7 @@ const CardItem = (item) => {
             {item.size}
           </Card.Text>
           <div className="d-grid gap-2">
-            <NavLink to={`/menu/${item.id}`} className="btn btn-outline-danger">Add to Cart</NavLink>
-            <NavLink to={`/menu/${item.id}`} className="btn btn-outline-dark">Check Item Details</NavLink>
+            <NavLink to={`/menu/${item.id}`} className="btn btn-outline-danger">Check Item Details</NavLink>
           </div>
         </Card.Body>
       </Card>
