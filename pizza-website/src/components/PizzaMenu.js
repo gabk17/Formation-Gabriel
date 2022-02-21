@@ -1,8 +1,7 @@
-import React from 'react';
 import { DATA } from '../Data';
-import { background } from '../assets/index';
-import MenuTitle from './MenuTitle';
 import CardItem from './CardItem';
+import MenuTitle from './MenuTitle';
+import { background } from '../assets/index';
 
 function PizzaMenu() {
   

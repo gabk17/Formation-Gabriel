@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { background } from '../assets/index';
-import { DATA } from '../Data';
-import ColoredLine from './ColoredLine';
-import MenuTitle from './MenuTitle';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { DATA } from '../Data';
+import MenuTitle from './MenuTitle';
+import ColoredLine from './ColoredLine';
+import { background } from '../assets/index';
 import { addPizza, delPizza} from './redux/actions/index';
 
 function PizzaDetail() {

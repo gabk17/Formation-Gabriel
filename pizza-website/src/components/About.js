@@ -1,4 +1,3 @@
-import React from 'react';
 import { illustration3 } from '../assets/index';
 
 function About() {

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { image1, image2, image3 } from '../assets/index';
+import { useSelector } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
+import 'react-notifications-component/dist/theme.css';
+import { ReactNotifications, Store } from 'react-notifications-component';
+
 import About from './About';
 import ColoredLine from './ColoredLine';
-import { useSelector } from 'react-redux';
-import { ReactNotifications, Store } from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
+import { image1, image2, image3 } from '../assets/index';
 
 function Home() {
 

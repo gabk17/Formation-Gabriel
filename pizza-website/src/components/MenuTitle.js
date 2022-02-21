@@ -1,4 +1,3 @@
-import React from 'react';
 import ColoredLine from './ColoredLine';
 
 const MenuTitle = () => {

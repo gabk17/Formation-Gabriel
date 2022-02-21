@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { delPizza, reset } from './redux/actions/index';
-import { placeOrder } from './redux/actions/placeOrder';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Checkout from './Checkout';
 import ColoredLine from './ColoredLine';
+import { placeOrder } from './redux/actions/placeOrder';
+import { delPizza, reset } from './redux/actions/index';
 
 function Cart() {
 
