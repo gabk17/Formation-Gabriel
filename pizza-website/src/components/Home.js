@@ -9,12 +9,12 @@ import 'react-notifications-component/dist/theme.css';
 
 function Home() {
 
-  const isOrderPlaced = useSelector((state) => state.order)
+  const isOrderPlaced = useSelector((state) => state.order);
 
   useEffect(() => {
     if (isOrderPlaced === true) {
-      window.scrollTo(0, 0)
-      doNotification()
+      window.scrollTo(0, 0);
+      doNotification();
     }
   }, [])
 
