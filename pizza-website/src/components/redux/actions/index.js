@@ -11,3 +11,9 @@ export const delPizza = (pizza) => {
     payload: pizza
   }
 }
+
+export const reset = () => {
+  return {
+    type: 'RESET',
+  }
+}

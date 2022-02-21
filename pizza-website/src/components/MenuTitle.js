@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ColoredLine from './ColoredLine';
 
 const MenuTitle = () => {
@@ -15,4 +15,4 @@ const MenuTitle = () => {
   )
 }
 
-export default MenuTitle
+export default MenuTitle;

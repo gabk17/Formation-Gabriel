@@ -48,4 +48,4 @@ export const DATA = [
     img: 'https://picsum.photos/400'
   },
   
-]
+];

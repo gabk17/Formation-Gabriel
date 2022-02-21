@@ -16,7 +16,8 @@ const CardItem = (item) => {
           </div>
         </Card.Body>
       </Card>
-    )
+    );
   }
 
-  export default CardItem
+  export default CardItem;
+  
