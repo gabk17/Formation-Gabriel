@@ -16,7 +16,7 @@ function PizzaDetail() {
   // }) 
   // Debugs the Filtering of DATA content, and conditioning of e.id === pizzaID
 
-  const[cartBtn, setCartBtn] = useState("Add to Cart");
+  const [cartBtn, setCartBtn] = useState("Add to Cart");
   const dispatch = useDispatch()
   const pizzaID = useParams();
   const pDetail = DATA.filter((e) => e.id === pizzaID.id)

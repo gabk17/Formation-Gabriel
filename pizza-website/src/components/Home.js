@@ -17,7 +17,7 @@ function Home() {
       window.scrollTo(0, 0);
       doNotification();
     }
-  }, [])
+  }, [isOrderPlaced])
 
   const doNotification = () => {
     Store.addNotification({
