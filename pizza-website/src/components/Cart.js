@@ -55,6 +55,7 @@ function Cart() {
     );
   }
 
+  
   const checkoutButton = () => {
     return (
       <div className="container">
@@ -64,13 +65,20 @@ function Cart() {
       </div>
     );
   }
+  
+  const showCart = () => {
+    return (
+      <>
+        {cartCount.map(cartItems)} 
+        <Checkout />
+        {checkoutButton()}
+      </>
+    )
+  }
 
   return (
     <div>
-      {cartCount.length === 0 && emptyCart()}
-      {cartCount.length !== 0 && cartCount.map(cartItems)}
-      <Checkout />
-      {cartCount.length !== 0 && checkoutButton()}
+      {cartCount.length === 0 ? emptyCart() : showCart()}
     </div>
   );
 }
