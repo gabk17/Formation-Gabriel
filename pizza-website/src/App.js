@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Reactotron from 'reactotron-react-js'
+// import Reactotron from 'reactotron-react-js'
 
 import Home from './components/Home';
 import Cart from './components/Cart';
