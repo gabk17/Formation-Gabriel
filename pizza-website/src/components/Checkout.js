@@ -4,7 +4,7 @@ const Checkout = () => {
 
   const cartCount = useSelector((state) => state.pizza);
   let total = 0;
-  let tva = 22.4;
+  const tva = 22.4;
 
   const cartList = (item) => {
 
