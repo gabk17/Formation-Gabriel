@@ -1,4 +1,5 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
+import Reactotron from 'reactotron-react-js'
 
 import Home from './components/Home';
 import Cart from './components/Cart';
@@ -11,6 +12,12 @@ import PizzaDetail from './components/PizzaDetail';
 function App() {
   return (
     <>
+    {/* {Reactotron.display({
+  name: 'KNOCK KNOCK',
+  preview: 'Who\'s there?',
+  value: 'Orange.'
+})} */}
+
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
