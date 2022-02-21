@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Carousel from 'react-bootstrap/Carousel';
 import 'react-notifications-component/dist/theme.css';
 import { ReactNotifications, Store } from 'react-notifications-component';
 
 import About from './About';
 import ColoredLine from './ColoredLine';
-import { image1, image2, image3 } from '../assets/index';
+import PhotoCarousel from './PhotoCarousel';
 
 function Home() {
 
@@ -49,29 +48,7 @@ function Home() {
       <ColoredLine color="red" />
 
       <div>
-        <Carousel fade>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={image1}
-              alt="First slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={image2}
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={image3}
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        </Carousel>
+        {PhotoCarousel()}
       </div>
 
       <ColoredLine color="red" />
