@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 import { DATA } from '../Data';
 import MenuTitle from './MenuTitle';
 import ColoredLine from './ColoredLine';
 import { background } from '../assets/index';
-import { addPizza, delPizza} from './redux/actions/index';
+import { addPizza, delPizza } from './redux/actions/index';
 
 function PizzaDetail() {
 
@@ -17,26 +18,31 @@ function PizzaDetail() {
   // Debugs the Filtering of DATA content, and conditioning of e.id === pizzaID
 
   const [cartBtn, setCartBtn] = useState("Add to Cart");
+  const [chosenQuantity, setChosenQuantity] = useState("1")
   const dispatch = useDispatch()
   const pizzaID = useParams();
   const pDetail = DATA.filter((e) => e.id === pizzaID.id)
   const pizza = pDetail[0];
 
-  const handleCart = (pizza) =>{
-    if(cartBtn === "Add to Cart"){
-      dispatch(addPizza(pizza))
+  const handleCart = (pizza, quantity) => {
+    if (cartBtn === "Add to Cart") {
+      dispatch(addPizza(pizza, quantity));
       setCartBtn("Remove from Cart")
     }
-    else{
-      dispatch(delPizza(pizza))
+    else {
+      dispatch(delPizza(pizza, quantity))
       setCartBtn("Add to Cart")
     }
+  }
+
+  const handleSelect = (e) => {
+    setChosenQuantity(e)
   }
 
   return (
 
     <div style={{ backgroundImage: `url(${background})` }}>
-      <MenuTitle/>
+      <MenuTitle />
       <div className="container bg-white">
         <div className="row">
           <div className="row">
@@ -48,7 +54,23 @@ function PizzaDetail() {
               <hr />
               <h2 className="my-4">${pizza.price}</h2>
               <p className="lead">{pizza.description}</p>
-              <button className="btn btn-outline-danger my-5" onClick={() => handleCart(pizza)}>{cartBtn}</button>
+              <DropdownButton
+                title="Choose Quantity"
+                onSelect={handleSelect}
+              >
+                <Dropdown.Item eventKey="1">1</Dropdown.Item>
+                <Dropdown.Item eventKey="2">2</Dropdown.Item>
+                <Dropdown.Item eventKey="3">3</Dropdown.Item>
+                <Dropdown.Item eventKey="4">4</Dropdown.Item>
+                <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                <Dropdown.Item eventKey="6">6</Dropdown.Item>
+                <Dropdown.Item eventKey="7">7</Dropdown.Item>
+                <Dropdown.Item eventKey="8">8</Dropdown.Item>
+                <Dropdown.Item eventKey="9">9</Dropdown.Item>
+
+              </DropdownButton>
+              <h4 className="mt-4">Quantity: {chosenQuantity}</h4>
+              <button className="btn btn-outline-danger my-4" onClick={() => handleCart(pizza, chosenQuantity)}>{cartBtn}</button>
               <hr />
             </div>
           </div>

@@ -3,6 +3,7 @@ const pizzas = [];
 const pizzaReducer = (state = pizzas, action) => {
   switch(action.type) {
     case "ADDPIZZA": 
+      action.payload.quantity = action.qty
       return [...state, action.payload];
 
     case "DELPIZZA": 

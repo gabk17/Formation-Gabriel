@@ -1,14 +1,16 @@
-export const addPizza = (pizza) => {
+export const addPizza = (pizza, quantity) => {
   return {
     type: 'ADDPIZZA',
-    payload: pizza
+    payload: pizza, 
+    qty: quantity
   }
 }
 
-export const delPizza = (pizza) => {
+export const delPizza = (pizza, quantity) => {
   return {
     type: 'DELPIZZA',
-    payload: pizza
+    payload: pizza, 
+    qty: quantity
   }
 }
 
@@ -17,3 +19,4 @@ export const reset = () => {
     type: 'RESET',
   }
 }
+

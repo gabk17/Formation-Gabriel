@@ -47,6 +47,7 @@ function Cart() {
               <ColoredLine color="red" />
               <h3>{cartItem.title}</h3>
               <p className="lead fw-bold">${cartItem.price}</p>
+              <p className="lead fw-bold">Quantity: {cartItem.quantity}</p>
               <ColoredLine color="red" />
             </div>
           </div>
