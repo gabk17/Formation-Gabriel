@@ -1,18 +1,19 @@
 
 import { createReducer, Types as ReduxSauceTypes } from "reduxsauce";
-import Types from './orderActionTypes'
+
+import Types from './orderActionTypes';
 
 const INITIAL_STATE  = {
   isOrdered: false,
 };
 
 export const placeOrder = (state = INITIAL_STATE , action) => {
-  return true
+  return true;
 };
 
 
 const defaultHandler = (state = INITIAL_STATE, action) => {
-  return state
+  return state;
 }
 
 const HANDLERS = {

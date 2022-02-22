@@ -1,5 +1,6 @@
-import Carousel from 'react-bootstrap/Carousel';
 import { image1, image2, image3 } from '../assets/index';
+
+import Carousel from 'react-bootstrap/Carousel';
 
 const PhotoCarousel = () => {
 

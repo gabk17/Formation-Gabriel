@@ -1,6 +1,7 @@
 
 import { createReducer, Types as ReduxSauceTypes } from "reduxsauce";
-import Types from './pizzaActionTypes'
+
+import Types from './pizzaActionTypes';
 
 const INITIAL_STATE  = {
   pizzas: []
@@ -18,11 +19,11 @@ export const delPizza = (state = INITIAL_STATE , action) => {
 };
 
 const reset = (state = INITIAL_STATE , action) => {
-  return []
+  return [];
 }
 
 const defaultHandler = (state = INITIAL_STATE, action) => {
-  return state
+  return state;
 }
 
 const HANDLERS = {
