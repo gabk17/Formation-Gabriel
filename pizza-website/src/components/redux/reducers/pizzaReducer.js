@@ -20,3 +20,4 @@ const pizzaReducer = (state = pizzas, action) => {
 }
 
 export default pizzaReducer;
+

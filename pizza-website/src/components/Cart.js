@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import Checkout from './Checkout';
 import ColoredLine from './ColoredLine';
 import { placeOrder } from './redux/actions/placeOrder';
