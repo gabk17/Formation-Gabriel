@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Checkout from '../components/Checkout';
 import ColoredLine from '../components/ColoredLine';
-import { placeOrder } from '../reducers/actions/placeOrder';
-import { delPizza, reset } from '../reducers/actions/index';
+import OCreators from '../reducers/reduxsauce/orderReducerSauce';
+import PCreators from '../reducers/reduxsauce/pizzaReducerSauce';
+
 
 function Cart() {
 
@@ -12,12 +13,12 @@ function Cart() {
   const cartCount = useSelector((state) => state.pizza);
 
   const handleClose = (item) => {
-    dispatch(delPizza(item));
+    dispatch(PCreators.delPizza(item));
   }
 
   const sendOrder = () => {
-    dispatch(placeOrder());
-    dispatch(reset());
+    dispatch(OCreators.placeOrder());
+    dispatch(PCreators.reset());
   }
 
   const emptyCart = () => {

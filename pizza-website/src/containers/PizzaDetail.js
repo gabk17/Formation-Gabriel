@@ -6,7 +6,8 @@ import { DATA } from '../utils/Data';
 import MenuTitle from '../components/MenuTitle';
 import ColoredLine from '../components/ColoredLine';
 import { background } from '../assets/index';
-import { addPizza, delPizza } from '../reducers/actions/index';
+import PCreators from '../reducers/reduxsauce/pizzaReducerSauce';
+
 
 function PizzaDetail() {
 
@@ -25,11 +26,11 @@ function PizzaDetail() {
 
   const handleCart = (pizza, quantity) => {
     if (cartBtn === "Add Quantity to Cart") {
-      dispatch(addPizza(pizza, quantity));
+      dispatch(PCreators.addPizza(pizza, quantity));
       setCartBtn("Remove All from Cart")
     }
     else {
-      dispatch(delPizza(pizza, quantity))
+      dispatch(PCreators.delPizza(pizza, quantity))
       setCartBtn("Add Quantity to Cart")
     }
   }

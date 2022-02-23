@@ -1,7 +1,12 @@
 
-import { createReducer, Types as ReduxSauceTypes } from "reduxsauce";
+import { createReducer, createActions } from 'reduxsauce'
 
-import Types from './orderActionTypes';
+const { Types, Creators } = createActions({
+  placeOrder: null,
+  resetOrder: null,
+})
+
+export default Creators;
 
 const INITIAL_STATE = {
   isOrdered: false,
@@ -11,16 +16,13 @@ export const placeOrder = (state = INITIAL_STATE, action) => {
   return true;
 };
 
-
-const defaultHandler = (state = INITIAL_STATE, action) => {
-  return state;
-}
+export const resetOrder = (state = INITIAL_STATE, action) => {
+  return false;
+};
 
 const HANDLERS = {
   [Types.PLACEORDER]: placeOrder,
-  [ReduxSauceTypes.DEFAULT]: defaultHandler,
+  [Types.RESETORDER]: resetOrder,
 };
 
-const orderReducerSauce = createReducer(INITIAL_STATE, HANDLERS);
-
-export default orderReducerSauce;
+export const orderReducerSauce = createReducer(INITIAL_STATE, HANDLERS);
