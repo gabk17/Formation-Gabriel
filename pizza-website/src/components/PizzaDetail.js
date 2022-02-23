@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown'
 
 import { DATA } from '../Data';
 import MenuTitle from './MenuTitle';
@@ -18,26 +16,31 @@ function PizzaDetail() {
   // }) 
   // Debugs the Filtering of DATA content, and conditioning of e.id === pizzaID
 
-  const [cartBtn, setCartBtn] = useState("Add to Cart");
-  const [chosenQuantity, setChosenQuantity] = useState("1")
+  const [cartBtn, setCartBtn] = useState("Add Quantity to Cart");
+  const [chosenQuantity, setChosenQuantity] = useState(1)
   const dispatch = useDispatch()
   const pizzaID = useParams();
   const pDetail = DATA.filter((e) => e.id === pizzaID.id)
   const pizza = pDetail[0];
 
   const handleCart = (pizza, quantity) => {
-    if (cartBtn === "Add to Cart") {
+    if (cartBtn === "Add Quantity to Cart") {
       dispatch(addPizza(pizza, quantity));
-      setCartBtn("Remove from Cart")
+      setCartBtn("Remove All from Cart")
     }
     else {
       dispatch(delPizza(pizza, quantity))
-      setCartBtn("Add to Cart")
+      setCartBtn("Add Quantity to Cart")
     }
   }
 
-  const handleSelect = (e) => {
-    setChosenQuantity(e)
+  const handleIncrement = () => {
+    setChosenQuantity(chosenQuantity + 1)
+  }
+
+  const handleDecrement = () => {
+    if (chosenQuantity === 1) return
+    setChosenQuantity(chosenQuantity - 1)
   }
 
   return (
@@ -55,21 +58,10 @@ function PizzaDetail() {
               <hr />
               <h2 className="my-4">${pizza.price}</h2>
               <p className="lead">{pizza.description}</p>
-              <DropdownButton
-                title="Choose Quantity"
-                onSelect={handleSelect}
-              >
-                <Dropdown.Item eventKey="1">1</Dropdown.Item>
-                <Dropdown.Item eventKey="2">2</Dropdown.Item>
-                <Dropdown.Item eventKey="3">3</Dropdown.Item>
-                <Dropdown.Item eventKey="4">4</Dropdown.Item>
-                <Dropdown.Item eventKey="5">5</Dropdown.Item>
-                <Dropdown.Item eventKey="6">6</Dropdown.Item>
-                <Dropdown.Item eventKey="7">7</Dropdown.Item>
-                <Dropdown.Item eventKey="8">8</Dropdown.Item>
-                <Dropdown.Item eventKey="9">9</Dropdown.Item>
-
-              </DropdownButton>
+              <div className="d-flex flex-column justify-content-center">
+                <button onClick={handleIncrement} className="btn btn-outline-danger my-1">Add a Pizza!</button>
+                <button onClick={handleDecrement} className="btn btn-outline-danger my-1">Remove a Pizza</button>
+              </div>
               <h4 className="mt-4">Quantity: {chosenQuantity}</h4>
               <button className="btn btn-outline-danger my-4" onClick={() => handleCart(pizza, chosenQuantity)}>{cartBtn}</button>
               <hr />

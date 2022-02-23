@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import 'react-notifications-component/dist/theme.css';
 import { ReactNotifications, Store } from 'react-notifications-component';
 
 import CartIcon from './CartIcon';
+import { resetOrder } from './redux/actions/placeOrder';
 
 function Header() {
 
+  const dispatch = useDispatch();
   const isOrderPlaced = useSelector((state) => state.order);
 
   useEffect(() => {
+    dispatch(resetOrder());
     if (isOrderPlaced === true) {
       window.scrollTo(0, 0);
       doNotification();
+
     }
-  }, [])
+  })
 
   const doNotification = () => {
     Store.addNotification({

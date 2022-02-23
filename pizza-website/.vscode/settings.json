@@ -9,6 +9,7 @@
 		"Persistor",
 		"PLACEORDER",
 		"Reactotron",
-		"reduxsauce"
+		"reduxsauce",
+		"RESETORDER"
 	]
 }

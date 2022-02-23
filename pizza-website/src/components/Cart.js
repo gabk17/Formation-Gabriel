@@ -55,7 +55,7 @@ function Cart() {
     );
   }
 
-  
+
   const checkoutButton = () => {
     return (
       <div className="container">
@@ -65,11 +65,11 @@ function Cart() {
       </div>
     );
   }
-  
+
   const showCart = () => {
     return (
       <>
-        {cartCount.map(cartItems)} 
+        {cartCount.map(cartItems)}
         <Checkout />
         {checkoutButton()}
       </>
