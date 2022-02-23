@@ -6,7 +6,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import rootReducer from "../reducers/index";
 
 const persistConfig = {
-  key:'main-root',
+  key: 'main-root',
   storage,
 }
 
