@@ -5,7 +5,7 @@ import 'react-notifications-component/dist/theme.css';
 import { ReactNotifications, Store } from 'react-notifications-component';
 
 import CartIcon from './CartIcon';
-import { resetOrder } from './redux/actions/placeOrder';
+import { resetOrder } from '../reducers/actions/placeOrder';
 
 function Header() {
 

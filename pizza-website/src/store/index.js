@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
 import storage from 'redux-persist/lib/storage';
-import Reactotron from '../../../ReactotronConfig';
 import { persistStore, persistReducer } from 'redux-persist';
 
-import rootReducer from "../reducers/index";
+import Reactotron from '../utils/ReactotronConfig';
+import rootReducer from "../reducers/reducers/index";
+
 
 const persistConfig = {
   key: 'main-root',

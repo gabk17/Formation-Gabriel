@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Checkout from './Checkout';
-import ColoredLine from './ColoredLine';
-import { placeOrder } from './redux/actions/placeOrder';
-import { delPizza, reset } from './redux/actions/index';
+
+import Checkout from '../components/Checkout';
+import ColoredLine from '../components/ColoredLine';
+import { placeOrder } from '../reducers/actions/placeOrder';
+import { delPizza, reset } from '../reducers/actions/index';
 
 function Cart() {
 

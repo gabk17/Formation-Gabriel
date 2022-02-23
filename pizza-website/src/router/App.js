@@ -1,18 +1,18 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 // import Reactotron from 'reactotron-react-js'
 
-import Home from './components/Home';
-import Cart from './components/Cart';
-import "./components/fontAwesome/index";
-import Header from './components/Header';
-import PizzaMenu from './components/PizzaMenu';
-import PizzaDetail from './components/PizzaDetail';
+import Home from '../containers/Home';
+import Cart from '../containers/Cart';
+import "../utils/fontAwesome/index";
+import Header from '../components/Header';
+import PizzaMenu from '../containers/PizzaMenu';
+import PizzaDetail from '../containers/PizzaDetail';
 
 
 function App() {
   return (
     <>
-    {/* {Reactotron.display({
+      {/* {Reactotron.display({
   name: 'KNOCK KNOCK',
   preview: 'Who\'s there?',
   value: 'Orange.'

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { DATA } from '../Data';
-import MenuTitle from './MenuTitle';
-import ColoredLine from './ColoredLine';
+import { DATA } from '../utils/Data';
+import MenuTitle from '../components/MenuTitle';
+import ColoredLine from '../components/ColoredLine';
 import { background } from '../assets/index';
-import { addPizza, delPizza } from './redux/actions/index';
+import { addPizza, delPizza } from '../reducers/actions/index';
 
 function PizzaDetail() {
 

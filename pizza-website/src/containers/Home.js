@@ -1,10 +1,8 @@
-import About from './About';
-import ColoredLine from './ColoredLine';
-import PhotoCarousel from './PhotoCarousel';
+import About from '../components/About';
+import ColoredLine from '../components/ColoredLine';
+import PhotoCarousel from '../components/PhotoCarousel';
 
 function Home() {
-
-
 
   return (
     <div>

@@ -1,10 +1,10 @@
-import { DATA } from '../Data';
-import CardItem from './CardItem';
-import MenuTitle from './MenuTitle';
+import { DATA } from '../utils/Data';
+import CardItem from '../components/CardItem';
+import MenuTitle from '../components/MenuTitle';
 import { background } from '../assets/index';
 
 function PizzaMenu() {
-  
+
   return (
     <div style={{ backgroundImage: `url(${background})` }}>
       <MenuTitle />
